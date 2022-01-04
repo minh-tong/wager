@@ -1,0 +1,24 @@
+version: '3.5'
+
+services:
+  app:
+    build:
+      context: '.'
+    container_name: app
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+  db:
+    image: mysql:5.7
+    container_name: db
+    ports:
+      - 3306:3306
+    volumes:
+      - ./run/var:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=wager_api
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true

@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . '/../vendor/autoload.php';
 
 (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
@@ -27,6 +26,8 @@ $app->withFacades();
 
 $app->withEloquent();
 
+$app->configure('swagger-lume');
+
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
@@ -46,6 +47,16 @@ $app->singleton(
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
     App\Console\Kernel::class
+);
+
+$app->bind(
+    App\Repositories\WagerRepositoryInterface::class,
+    App\Repositories\WagerRepository::class
+);
+
+$app->bind(
+    App\Repositories\PurchaseRepositoryInterface::class,
+    App\Repositories\PurchaseRepository::class
 );
 
 /*
@@ -94,6 +105,7 @@ $app->configure('app');
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+$app->register(\SwaggerLume\ServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

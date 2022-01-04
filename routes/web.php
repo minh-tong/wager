@@ -18,6 +18,7 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group(['middleware' => 'json_request'], function () use ($router) {
-    $router->post('/wagers',  ['uses' => 'WagerController@index', 'as' => 'create_wagers']);
-    $router->post('/buy/{id}',  ['uses' => 'BuyController@index', 'as' => 'buy_wagers']);
+    $router->post('/wagers',  ['uses' => 'WagerController@index', 'as' => 'create_wager']);
+    $router->get('/wagers',  ['uses' => 'WagerListController@index', 'as' => 'get_wagers']);
+    $router->post('/buy/{id}',  ['uses' => 'BuyController@index', 'as' => 'buy_wager']);
 });

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 echo "Building app"
 composer install
 php artisan config:clear

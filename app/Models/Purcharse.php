@@ -13,9 +13,4 @@ class Purcharse extends Model
 
     const CREATED_AT = 'bought_at';
     const UPDATED_AT = 'bought_at';
-
-    public static function getTheLasestPurchase(int $wagerId)
-    {
-        return self::where('wager_id', $wagerId)->latest()->first();
-    }
 }
