@@ -16,8 +16,6 @@ services:
     container_name: db
     ports:
       - 3306:3306
-    volumes:
-      - ./run/var:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=wager_api
